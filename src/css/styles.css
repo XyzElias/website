@@ -1,1 +1,209 @@
-...
+/* === GLOBAL === */
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: "Heebo", sans-serif;
+    background-color: #f2f7fc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* === GRID-SYSTEM === */
+
+.container {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+[class*="col-"] {
+    float: left;
+    min-height: 1px;
+    padding: 0.8rem;
+}
+
+.col-1 { width: 16.666%; }
+.col-2 { width: 33.333%; }
+.col-3 { width: 50%;     }
+.col-4 { width: 66.666%; }
+.col-6 { width: 100%;    }
+
+@media (max-width: 1024px) {
+
+    .col-1 { width: 33.333%; }
+    
+}
+
+@media (max-width: 768px) {
+
+    .col-1 { width: 50%;  }
+    .col-2 { width: 100%; }
+    .col-3 { width: 100%; }
+    .col-4 { width: 100%; }
+    
+}
+
+@media (max-width: 480px) {
+
+    .col-1 { width: 100%; }
+    .col-2 { width: 100%; }
+    .col-3 { width: 100%; }
+    .col-4 { width: 100%; }
+    
+}
+
+/*=== GENERELLES === */
+
+.active {
+    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* === NAVIGATIONSLEISTE === */
+
+#header-nav .col-6 {
+    padding: 0;
+}
+
+#header-nav .container {
+    width: 100%;
+}
+
+#header-nav {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#header-nav ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    border-bottom: darkgray 2px solid;
+    padding-bottom: 55px;
+}
+
+#header-nav ul > li {
+    display: inline-block;
+    height: 100%;
+    padding: 0 0.6rem 0 0.6rem
+}
+
+#header-nav ul > li > a {
+    margin-top: 0.85rem;
+    display: inline-block;
+}
+
+#header-nav ul > li > a:link {
+    color: #000000;
+    text-decoration: none;
+}
+
+#header-nav ul > li > a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+
+#header-nav ul > li > a:hover {
+    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+#header-nav ul > li > a:active {
+    color: #000000;
+    text-decoration: none;
+}
+
+#header-nav .col-6 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#header-nav .container,
+#header-nav .row,
+#header-nav .col-6 {
+    height: 100%;
+}
+
+#header-nav .hr-nav {
+    width: 100%;
+    margin-top: 0;
+}
+
+/* === EINLEITUNG === */
+
+#einleitung {
+    margin-top: 10rem;
+}
+
+#einleitung .einleitung-bereich {
+    width: 500px;
+    margin-right: 5rem;
+    margin-left: auto;
+    text-align: left;
+}
+
+#einleitung .einleitung-title h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #150042;
+}
+
+#einleitung .einleitung-title h1:nth-of-type(2) {
+    display: inline;
+    top: -45px;
+    position: relative;
+}
+
+#einleitung .einleitung-title h1:nth-of-type(3) {
+    display: inline;
+    top: -45px;
+    position: relative;
+}
+
+#einleitung .einleitung-text {
+    font-size: 1.3rem;
+    width: 600px;
+    top: -85px;
+    position: relative;
+    color: #150042bf;
+    font-weight: 400;
+}
+
+#einleitung .einleitung-text > .einleitung-text-header {
+    font-weight: 500;
+}
+
+#einleitung .einleitung-bild {
+    width: 200px;
+    margin-left: 5rem;
+    margin-right: auto;
+    text-align: right;
+}
+
+#einleitung .name {
+    display: inline-block;
+    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
