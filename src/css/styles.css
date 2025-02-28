@@ -72,6 +72,38 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+section {
+    height: 100vh;
+    padding-top: 70px;;
+}
+
+.button {
+    border: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
+    border-radius: 50px;
+    margin-top: 0;
+    padding: 0.5rem;
+    width: 5rem;
+}
+
+.sticky-elias {
+    z-index: -10;
+    opacity: .2;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: fixed;
+    inset: 26% 0%;
+}
+
+.name-background {
+    z-index: -2;
+    text-align: center;
+    position: static;
+    inset: 32% 0% 0%;
+    width: 100%;
+}
+
 /* === NAVIGATIONSLEISTE === */
 
 #header-nav .col-6 {
@@ -85,9 +117,12 @@ body {
 #header-nav {
     width: 100%;
     height: 50px;
-    position: relative;
+    position: sticky;
     font-weight: bold;
     font-size: 1.2rem;
+    top: 0;
+    background-color: #f2f7fc;
+    z-index: 1000;
 }
 
 #header-nav ul {
@@ -97,6 +132,7 @@ body {
     height: 100%;
     border-bottom: darkgray 2px solid;
     padding-bottom: 55px;
+    background-color: #f2f7fc;
 }
 
 #header-nav ul > li {
@@ -206,4 +242,66 @@ body {
     background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* === KONTAKT-BEREICH === */
+
+#kontakt label {
+    display: none;
+}
+
+#kontakt .intro-container {
+    text-align: center;
+}
+
+#kontakt h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #150042;
+}
+
+#kontakt input,
+#kontakt textarea {
+    width: 100%;
+    border: 2px solid #3abaff81;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: "Raleway", "Lato", "Helvetica Neue", "Arial", sans-serif;
+    color: #3D3F45;
+    transition: border 0.5s ease-in-out;
+}
+
+#kontakt textarea {
+    height: 100px;
+}
+
+#kontakt {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 1366px) {
+
+    #kontakt {
+        width: 90%;
+    }
+    
+}
+
+@media (max-width: 1024px) {
+
+    #kontakt {
+        width: 100%;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    #kontakt button {
+        width: 100%;
+    }
 }
