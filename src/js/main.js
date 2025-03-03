@@ -12,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Aktivieren der aktiven Klasse beim Scrollen
 window.addEventListener('scroll', function () {
     let sections = document.querySelectorAll('section');
-    let navLinks = document.querySelectorAll('nav a');
+    let navLinks = document.querySelectorAll('#header-nav ul > li > a');
     let maxVisibleSection = null;
     let maxVisibleHeight = 0;
 
@@ -36,9 +36,10 @@ window.addEventListener('scroll', function () {
     }
 });
 
-
-document.querySelectorAll('a').forEach(link => {
+// Click-Event für Navigation optimieren (Verhindert Fokus auf Mobile)
+document.querySelectorAll('#header-nav ul > li > a').forEach(link => {
     link.addEventListener('click', function () {
-        setTimeout(() => this.blur(), 1);
+        setTimeout(() => this.blur(), 100);
     });
 });
+
