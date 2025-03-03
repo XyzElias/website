@@ -10,6 +10,12 @@ body {
     background-color: #f2f7fc;
 }
 
+::selection {
+    background: #000000;
+    color: #ffffff;
+    text-shadow: none;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -66,6 +72,15 @@ body {
 
 /*=== GENERELLES === */
 
+.middle-line {
+    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
+    width: 70px;
+    height: 6px;
+    margin-top: -5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .active {
     background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
     background-clip: text;
@@ -78,11 +93,35 @@ section {
 }
 
 .button {
-    border: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
+    background: #f2f7fc;
+    color: #150042;
     border-radius: 50px;
-    margin-top: 0;
-    padding: 0.5rem;
-    width: 5rem;
+    padding: 9px 45px 6px;
+    font-size: 1.6em;
+    transition: all .2s;
+    width: 159px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.email-button {
+    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
+    border-radius: 50px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 166px;
+    margin-bottom: 5px;
+    margin-left: 12px;
+}
+
+
+.button:hover {
+    background-color: transparent;
 }
 
 .sticky-elias {
@@ -219,7 +258,7 @@ section {
 
 #einleitung .einleitung-text {
     font-size: 1.3rem;
-    width: 600px;
+    width: 110%;
     top: -85px;
     position: relative;
     color: #150042bf;
