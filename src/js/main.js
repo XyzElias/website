@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Zusätzlicher Fallback: Falls IntersectionObserver fehlschlägt, nutze Scroll-Listener
+    // Scroll-Listener als zusätzliche Sicherheit
     window.addEventListener("scroll", () => {
         if (isScrollingManually) return; // Während Animation nichts ändern
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Event-Listener für Klicks auf Navigationspunkte
+    // Klick-Event für Navigationspunkte
     navLinks.forEach((link) => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                isScrollingManually = true; // Blockiert falsche Aktivierung während Animation
+                isScrollingManually = true; // Blockiert Observer während der Animation
                 clearTimeout(manualScrollTimeout); // Reset Timeout
 
                 window.scrollTo({
@@ -79,9 +79,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 setActiveLink(targetId); // Setzt `active` sofort
 
-                // Nach Scrollanimation wieder freigeben
+                // Beobachtung wieder aktivieren, wenn die Scroll-Animation abgeschlossen ist
                 manualScrollTimeout = setTimeout(() => {
                     isScrollingManually = false;
+
+                    // **Force-Update der aktiven Section nach der Animation**
+                    let activeSection = sections.find((section) => {
+                        let rect = section.getBoundingClientRect();
+                        return rect.top >= 0 && rect.top < window.innerHeight * 0.5;
+                    });
+
+                    if (activeSection) {
+                        setActiveLink(activeSection.id);
+                    }
                 }, 800); // Timing anpassen je nach Scrollgeschwindigkeit
             }
         });
