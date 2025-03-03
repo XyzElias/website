@@ -81,6 +81,14 @@ body {
     margin-right: auto;
 }
 
+.left-line {
+    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
+    width: 70px;
+    height: 6px;
+    margin-top: -5px;
+    margin-left: 0;
+}
+
 .active {
     background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
     background-clip: text;
@@ -89,7 +97,6 @@ body {
 
 section {
     height: 100vh;
-    padding-top: 70px;;
 }
 
 .button {
@@ -99,7 +106,7 @@ section {
     padding: 9px 45px 6px;
     font-size: 1.2em;
     transition: all .2s;
-    width: 129px;
+    width: 128px;
     border: none;
     display: flex;
     align-items: center;
@@ -118,7 +125,6 @@ section {
     margin-bottom: 5px;
     margin-left: 12px;
 }
-
 
 .button:hover {
     background-color: transparent;
@@ -169,7 +175,7 @@ section {
     padding: 0;
     text-align: center;
     height: 100%;
-    border-bottom: darkgray 2px solid;
+    border-bottom: lightgray 2px solid;
     padding-bottom: 55px;
     background-color: #f2f7fc;
 }
@@ -186,12 +192,12 @@ section {
 }
 
 #header-nav ul > li > a:link {
-    color: #000000;
+    color: #150042;
     text-decoration: none;
 }
 
 #header-nav ul > li > a:visited {
-    color: #000000;
+    color: #150042;
     text-decoration: none;
 }
 
@@ -203,7 +209,7 @@ section {
 }
 
 #header-nav ul > li > a:active {
-    color: #000000;
+    color: #150042;
     text-decoration: none;
 }
 
@@ -224,6 +230,15 @@ section {
 }
 
 /* === EINLEITUNG === */
+
+#einleitung .einleitung-bild .portrait {
+    height: 400px;
+    width: auto;
+    border-radius: 0 20px 0 20px; /* Abgerundete Ecken */
+    margin-left: 25%;
+    display: block;
+    margin-right: 0
+}
 
 #einleitung {
     margin-top: 10rem;
@@ -270,9 +285,6 @@ section {
 }
 
 #einleitung .einleitung-bild {
-    width: 200px;
-    margin-left: 5rem;
-    margin-right: auto;
     text-align: right;
 }
 
@@ -283,10 +295,33 @@ section {
     -webkit-text-fill-color: transparent;
 }
 
+@media (max-width: 920px) {
+    #einleitung .einleitung-bild .portrait {
+        height: 300px;
+        width: auto;
+        margin-left: 45%;
+        margin-top: 30px;
+    }
+}
+
 @media (max-width: 768px) {
     #einleitung .einleitung-bereich {
         margin-right: auto;
         margin-left: auto;
+    }
+
+    #einleitung .einleitung-bild {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #einleitung .einleitung-bild .portrait {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -50px;
+        height: 500px;
     }
 }
 
@@ -314,6 +349,10 @@ section {
 
     #einleitung .einleitung-title {
         width: 110%;
+    }
+
+    #einleitung .einleitung-bild .portrait {
+        height: 400px;
     }
 }
 
@@ -351,6 +390,27 @@ section {
     #einleitung .einleitung-text {
         top: -45px;
     }
+
+    #einleitung .einleitung-bild .portrait {
+        height: 300px;
+    }
+}
+
+/* === ABOUT BEREICH === */
+
+#about h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #150042;
+}
+
+#about .about-text {
+    font-size: 1.3rem;
+    width: 100%;
+    color: #150042bf;
+    font-weight: 400;
 }
 
 /* === KONTAKT-BEREICH === */
