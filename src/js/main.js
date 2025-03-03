@@ -13,33 +13,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function () {
     let sections = document.querySelectorAll('section');
     let navLinks = document.querySelectorAll('#header-nav ul > li > a');
-    let maxVisibleSection = null;
-    let maxVisibleHeight = 0;
 
     sections.forEach(section => {
         let rect = section.getBoundingClientRect();
-        let visibleHeight = Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top);
-
-        if (visibleHeight > maxVisibleHeight) {
-            maxVisibleHeight = visibleHeight;
-            maxVisibleSection = section;
+        if (rect.top <= 0 && rect.bottom > 0) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${section.id}`) {
+                    link.classList.add('active');
+                }
+            });
         }
     });
-
-    if (maxVisibleSection) {
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${maxVisibleSection.id}`) {
-                link.classList.add('active');
-            }
-        });
-    }
 });
 
-// Click-Event für Navigation optimieren (Verhindert Fokus auf Mobile)
+// Event-Listener für das Anklicken eines Links hinzufügen
 document.querySelectorAll('#header-nav ul > li > a').forEach(link => {
     link.addEventListener('click', function () {
-        setTimeout(() => this.blur(), 100);
+        // Entferne "active" von allen Links
+        document.querySelectorAll('#header-nav ul > li > a').forEach(navLink => {
+            navLink.classList.remove('active');
+        });
+
+        // Füge "active" dem aktuellen Link hinzu
+        this.classList.add('active');
+
+        // Verzögert das Entfernen des Fokus, um das Problem mit :active auf Mobilgeräten zu lösen
+        setTimeout(() => {
+            this.blur();
+        }, 200);
+    });
+
+    // Entferne die "active"-Klasse nach einem Touchend-Event
+    link.addEventListener('touchend', function () {
+        setTimeout(() => {
+            this.blur();
+        }, 200);
     });
 });
 
