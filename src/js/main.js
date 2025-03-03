@@ -39,6 +39,6 @@ window.addEventListener('scroll', function () {
 
 document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', function () {
-        setTimeout(() => this.blur(), 100);
+        setTimeout(() => this.blur(), 1);
     });
 });
