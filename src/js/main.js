@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let isScrollingManually = false;
     let manualScrollTimeout;
 
-    // Funktion, um den aktiven Link zu setzen und ALLE anderen zu deaktivieren
+    // Funktion zum Setzen des aktiven Links (alle anderen werden deaktiviert)
     function setActiveLink(activeId) {
         navLinks.forEach((link) => {
-            link.classList.remove("active"); // Entfernt immer zuerst alle active-Klassen
+            link.classList.remove("active"); // Entfernt alle active-Klassen
             if (link.getAttribute("href") === `#${activeId}`) {
-                link.classList.add("active"); // Setzt die Klasse nur für den richtigen Punkt
+                link.classList.add("active"); // Nur der korrekte Punkt wird gesetzt
             }
         });
     }
 
-    // IntersectionObserver für das Scroll-Tracking
+    // IntersectionObserver für Scroll-Erkennung
     let observer = new IntersectionObserver(
         (entries) => {
             if (isScrollingManually) return; // Blockiert Änderungen während einer Animation
@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Zusätzlicher Scroll-Listener als Backup
+    // Backup-Mechanismus per Scroll-Event
     window.addEventListener("scroll", () => {
-        if (isScrollingManually) return; // Während Animation keine Updates
+        if (isScrollingManually) return; // Während Animation nichts ändern
 
         let activeSection = null;
         sections.forEach((section) => {
@@ -80,13 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     behavior: "smooth",
                 });
 
-                setActiveLink(targetId); // Setzt `active` sofort
+                setActiveLink(targetId); // Setzt `active` sofort für das Ziel
 
-                // Nach Animation das Scroll-Tracking wieder aktivieren
+                // **Sobald die Animation vorbei ist, wird der `active`-Status durch Scroll überschrieben**
                 manualScrollTimeout = setTimeout(() => {
                     isScrollingManually = false;
 
-                    // **Sicherstellen, dass der manuell aktivierte Punkt überschrieben wird**
+                    // **Hier wird sichergestellt, dass das richtige `active`-Element gesetzt wird**
                     let activeSection = sections.find((section) => {
                         let rect = section.getBoundingClientRect();
                         return rect.top >= 0 && rect.top < window.innerHeight * 0.5;
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (activeSection) {
                         setActiveLink(activeSection.id);
                     }
-                }, 800); // Passt zur Scrollanimation an
+                }, 800); // Timing je nach Scrollanimation anpassen
             }
         });
     });
