@@ -14,22 +14,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let sections = document.querySelectorAll("section");
     let navLinks = document.querySelectorAll("nav a");
     let isScrollingManually = false;
+    let manualScrollTimeout;
 
-    // IntersectionObserver zur normalen Erkennung
+    // Funktion, um den aktiven Link korrekt zu setzen
+    function setActiveLink(activeId) {
+        navLinks.forEach((link) => {
+            link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+        });
+    }
+
+    // IntersectionObserver zur Überwachung des Scrollens
     let observer = new IntersectionObserver(
         (entries) => {
-            if (isScrollingManually) return; // Verhindert das Zwischen-Aktivieren bei Animation
+            if (isScrollingManually) return; // Während der Animation keine Änderungen
 
-            let activeSection = null;
-
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    activeSection = entry.target;
-                }
-            });
-
+            let activeSection = entries.find((entry) => entry.isIntersecting);
             if (activeSection) {
-                setActiveLink(activeSection.id);
+                setActiveLink(activeSection.target.id);
             }
         },
         {
@@ -43,9 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Fallback: Falls IntersectionObserver nicht perfekt funktioniert, nutze Scroll-Listener
+    // Zusätzlicher Fallback: Falls IntersectionObserver fehlschlägt, nutze Scroll-Listener
     window.addEventListener("scroll", () => {
-        if (isScrollingManually) return; // Blockiert das Flackern während Scrollanimationen
+        if (isScrollingManually) return; // Während Animation nichts ändern
 
         let activeSection = null;
         sections.forEach((section) => {
@@ -69,28 +70,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (targetSection) {
                 isScrollingManually = true; // Blockiert falsche Aktivierung während Animation
+                clearTimeout(manualScrollTimeout); // Reset Timeout
 
                 window.scrollTo({
                     top: targetSection.offsetTop,
                     behavior: "smooth",
                 });
 
-                setActiveLink(targetId); // Setzt die `active`-Klasse sofort richtig
+                setActiveLink(targetId); // Setzt `active` sofort
 
-                // Nach der Scrollanimation wieder freigeben
-                setTimeout(() => {
+                // Nach Scrollanimation wieder freigeben
+                manualScrollTimeout = setTimeout(() => {
                     isScrollingManually = false;
-                }, 1000); // Passt zur Scroll-Dauer an
+                }, 800); // Timing anpassen je nach Scrollgeschwindigkeit
             }
         });
     });
-
-    function setActiveLink(activeId) {
-        navLinks.forEach((link) => {
-            link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
-        });
-    }
 });
+
 
 
 
