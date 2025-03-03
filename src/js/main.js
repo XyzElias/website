@@ -26,20 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Wenn eine Sektion sichtbar ist, setze die Navigation
             if (activeSection) {
+                let activeId = activeSection.id;
+
+                // Entferne alle active-Klassen und setze nur die für die aktuelle Section
                 navLinks.forEach((link) => {
-                    link.classList.remove("active"); // Entferne immer zuerst alle Klassen
-                    if (link.getAttribute("href") === `#${activeSection.id}`) {
-                        link.classList.add("active"); // Setze die Klasse nur auf den aktiven Punkt
-                    }
+                    link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
                 });
-            } else {
-                // Falls keine Sektion sichtbar ist, entferne alle active-Klassen (z.B. beim schnellen Scrollen)
-                navLinks.forEach((link) => link.classList.remove("active"));
             }
         },
         {
             root: null, // Beobachtet das gesamte Viewport
-            rootMargin: "-50% 0px -50% 0px", // Erst wenn 50% des Elements sichtbar sind
+            rootMargin: "-50% 0px -50% 0px", // Sobald 50% der Section sichtbar sind
             threshold: 0.1, // Schwellenwert für Sichtbarkeit
         }
     );
@@ -48,17 +45,26 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // **Zusätzlicher Fallback: Entferne active-Klassen beim Scrollen, wenn kein Abschnitt im Viewport ist**
+    // **Sicherheitsmechanismus, falls IntersectionObserver nicht perfekt funktioniert**
     window.addEventListener("scroll", () => {
-        let inViewport = Array.from(sections).some(section => {
+        let found = false;
+        sections.forEach((section) => {
             let rect = section.getBoundingClientRect();
-            return rect.top >= 0 && rect.top < window.innerHeight;
+            if (rect.top >= 0 && rect.top < window.innerHeight * 0.5) {
+                let activeId = section.id;
+                navLinks.forEach((link) => {
+                    link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+                });
+                found = true;
+            }
         });
 
-        if (!inViewport) {
+        // Falls keine Section erkannt wird, entferne alle active-Klassen
+        if (!found) {
             navLinks.forEach((link) => link.classList.remove("active"));
         }
     });
 });
+
 
 
