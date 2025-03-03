@@ -12,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Aktivieren der aktiven Klasse beim Scrollen
 window.addEventListener('scroll', function () {
     let sections = document.querySelectorAll('section');
-    let navLinks = document.querySelectorAll('nav a');
+    let navLinks = document.querySelectorAll('#header-nav ul > li > a');
 
     sections.forEach(section => {
         let rect = section.getBoundingClientRect();
@@ -27,9 +27,14 @@ window.addEventListener('scroll', function () {
     });
 });
 
-window.hideOverlaidElements = function() {
-    const selectors = 'a';
-    document.querySelectorAll(selectors).forEach((element) => {
-        element.classList.remove('show');
+document.addEventListener("DOMContentLoaded", function () {
+    // Alle Navigationspunkte auswählen
+    document.querySelectorAll("#header-nav ul > li > a").forEach(link => {
+        link.addEventListener("click", function () {
+            // Entferne den "focus" Status nach einer kurzen Verzögerung
+            setTimeout(() => {
+                this.blur(); // Entfernt den Fokus
+            }, 100);
+        });
     });
-}
+});
