@@ -16,17 +16,20 @@ document.addEventListener("DOMContentLoaded", function () {
     let isScrollingManually = false;
     let manualScrollTimeout;
 
-    // Funktion, um den aktiven Link korrekt zu setzen
+    // Funktion, um den aktiven Link zu setzen und ALLE anderen zu deaktivieren
     function setActiveLink(activeId) {
         navLinks.forEach((link) => {
-            link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+            link.classList.remove("active"); // Entfernt immer zuerst alle active-Klassen
+            if (link.getAttribute("href") === `#${activeId}`) {
+                link.classList.add("active"); // Setzt die Klasse nur für den richtigen Punkt
+            }
         });
     }
 
-    // IntersectionObserver zur Überwachung des Scrollens
+    // IntersectionObserver für das Scroll-Tracking
     let observer = new IntersectionObserver(
         (entries) => {
-            if (isScrollingManually) return; // Während der Animation keine Änderungen
+            if (isScrollingManually) return; // Blockiert Änderungen während einer Animation
 
             let activeSection = entries.find((entry) => entry.isIntersecting);
             if (activeSection) {
@@ -44,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Scroll-Listener als zusätzliche Sicherheit
+    // Zusätzlicher Scroll-Listener als Backup
     window.addEventListener("scroll", () => {
-        if (isScrollingManually) return; // Während Animation nichts ändern
+        if (isScrollingManually) return; // Während Animation keine Updates
 
         let activeSection = null;
         sections.forEach((section) => {
@@ -70,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (targetSection) {
                 isScrollingManually = true; // Blockiert Observer während der Animation
-                clearTimeout(manualScrollTimeout); // Reset Timeout
+                clearTimeout(manualScrollTimeout);
 
                 window.scrollTo({
                     top: targetSection.offsetTop,
@@ -79,11 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 setActiveLink(targetId); // Setzt `active` sofort
 
-                // Beobachtung wieder aktivieren, wenn die Scroll-Animation abgeschlossen ist
+                // Nach Animation das Scroll-Tracking wieder aktivieren
                 manualScrollTimeout = setTimeout(() => {
                     isScrollingManually = false;
 
-                    // **Force-Update der aktiven Section nach der Animation**
+                    // **Sicherstellen, dass der manuell aktivierte Punkt überschrieben wird**
                     let activeSection = sections.find((section) => {
                         let rect = section.getBoundingClientRect();
                         return rect.top >= 0 && rect.top < window.innerHeight * 0.5;
@@ -92,13 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (activeSection) {
                         setActiveLink(activeSection.id);
                     }
-                }, 800); // Timing anpassen je nach Scrollgeschwindigkeit
+                }, 800); // Passt zur Scrollanimation an
             }
         });
     });
 });
-
-
-
-
-

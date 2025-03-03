@@ -205,7 +205,6 @@ section {
 #header-nav ul > li > a:active {
     color: #000000;
     text-decoration: none;
-    background: none;
 }
 
 #header-nav .col-6 {
