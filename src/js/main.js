@@ -27,10 +27,9 @@ window.addEventListener('scroll', function () {
     });
 });
 
-document.querySelectorAll("#header-nav ul > li > a").forEach(link => {
-    link.addEventListener("click", () => {
-        setTimeout(() => {
-            link.blur();
-        }, 100);
+window.hideOverlaidElements = function() {
+    const selectors = 'a';
+    document.querySelectorAll(selectors).forEach((element) => {
+        element.classList.remove('show');
     });
-});
+}
