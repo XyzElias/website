@@ -16,21 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let observer = new IntersectionObserver(
         (entries) => {
-            let visibleSection = null;
+            let activeSection = null;
 
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    visibleSection = entry.target;
+                    activeSection = entry.target;
                 }
             });
 
-            if (visibleSection) {
+            // Wenn eine Sektion sichtbar ist, setze die Navigation
+            if (activeSection) {
                 navLinks.forEach((link) => {
-                    link.classList.remove("active"); // Entferne zuerst alle aktiven Klassen
-                    if (link.getAttribute("href") === `#${visibleSection.id}`) {
-                        link.classList.add("active"); // Setze nur die Klasse für den sichtbaren Abschnitt
+                    link.classList.remove("active"); // Entferne immer zuerst alle Klassen
+                    if (link.getAttribute("href") === `#${activeSection.id}`) {
+                        link.classList.add("active"); // Setze die Klasse nur auf den aktiven Punkt
                     }
                 });
+            } else {
+                // Falls keine Sektion sichtbar ist, entferne alle active-Klassen (z.B. beim schnellen Scrollen)
+                navLinks.forEach((link) => link.classList.remove("active"));
             }
         },
         {
@@ -43,5 +47,18 @@ document.addEventListener("DOMContentLoaded", function () {
     sections.forEach((section) => {
         observer.observe(section);
     });
+
+    // **Zusätzlicher Fallback: Entferne active-Klassen beim Scrollen, wenn kein Abschnitt im Viewport ist**
+    window.addEventListener("scroll", () => {
+        let inViewport = Array.from(sections).some(section => {
+            let rect = section.getBoundingClientRect();
+            return rect.top >= 0 && rect.top < window.innerHeight;
+        });
+
+        if (!inViewport) {
+            navLinks.forEach((link) => link.classList.remove("active"));
+        }
+    });
 });
+
 
