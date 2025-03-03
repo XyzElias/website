@@ -13,16 +13,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function () {
     let sections = document.querySelectorAll('section');
     let navLinks = document.querySelectorAll('nav a');
+    let maxVisibleSection = null;
+    let maxVisibleHeight = 0;
 
     sections.forEach(section => {
         let rect = section.getBoundingClientRect();
-        if (rect.top <= 0 && rect.bottom > 0) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${section.id}`) {
-                    link.classList.add('active');
-                }
-            });
+        let visibleHeight = Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top);
+
+        if (visibleHeight > maxVisibleHeight) {
+            maxVisibleHeight = visibleHeight;
+            maxVisibleSection = section;
         }
+    });
+
+    if (maxVisibleSection) {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${maxVisibleSection.id}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+});
+
+
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function () {
+        setTimeout(() => this.blur(), 100);
     });
 });
