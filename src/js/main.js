@@ -16,20 +16,20 @@ document.addEventListener("DOMContentLoaded", function () {
     let isScrollingManually = false;
     let manualScrollTimeout;
 
-    // Funktion zum Setzen des aktiven Links (alle anderen werden deaktiviert)
+    // Funktion zum Setzen des aktiven Links (ALLE anderen deaktivieren)
     function setActiveLink(activeId) {
         navLinks.forEach((link) => {
-            link.classList.remove("active"); // Entfernt alle active-Klassen
+            link.classList.remove("active"); // Entfernt ALLE active-Klassen
             if (link.getAttribute("href") === `#${activeId}`) {
-                link.classList.add("active"); // Nur der korrekte Punkt wird gesetzt
+                link.classList.add("active"); // Nur der richtige Punkt wird gesetzt
             }
         });
     }
 
-    // IntersectionObserver für Scroll-Erkennung
+    // IntersectionObserver zur Scroll-Überwachung
     let observer = new IntersectionObserver(
         (entries) => {
-            if (isScrollingManually) return; // Blockiert Änderungen während einer Animation
+            if (isScrollingManually) return; // Während der Animation KEINE Updates
 
             let activeSection = entries.find((entry) => entry.isIntersecting);
             if (activeSection) {
@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Backup-Mechanismus per Scroll-Event
+    // Scroll-Listener als Backup (besonders wichtig für Mobile!)
     window.addEventListener("scroll", () => {
-        if (isScrollingManually) return; // Während Animation nichts ändern
+        if (isScrollingManually) return; // Während Animation keine Updates
 
         let activeSection = null;
         sections.forEach((section) => {
@@ -75,18 +75,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 isScrollingManually = true; // Blockiert Observer während der Animation
                 clearTimeout(manualScrollTimeout);
 
+                // Direkt die `active`-Klasse setzen (verhindert Touch-Probleme auf Mobile!)
+                setActiveLink(targetId);
+
                 window.scrollTo({
                     top: targetSection.offsetTop,
                     behavior: "smooth",
                 });
 
-                setActiveLink(targetId); // Setzt `active` sofort für das Ziel
-
-                // **Sobald die Animation vorbei ist, wird der `active`-Status durch Scroll überschrieben**
+                // **Lösung für Mobile:** Touch-Delay sicherstellen, dass `scroll` wieder korrekt funktioniert
                 manualScrollTimeout = setTimeout(() => {
                     isScrollingManually = false;
 
-                    // **Hier wird sichergestellt, dass das richtige `active`-Element gesetzt wird**
+                    // Nach der Scrollanimation überprüfen, welche Section wirklich aktiv ist
                     let activeSection = sections.find((section) => {
                         let rect = section.getBoundingClientRect();
                         return rect.top >= 0 && rect.top < window.innerHeight * 0.5;
@@ -95,8 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (activeSection) {
                         setActiveLink(activeSection.id);
                     }
-                }, 800); // Timing je nach Scrollanimation anpassen
+                }, 500); // **Kürzeres Timeout für bessere Mobile-Performance**
             }
         });
+    });
+
+    // **NEU:** Touchstart-Event sorgt dafür, dass kein Punkt „kleben bleibt“ auf Mobile
+    document.addEventListener("touchstart", () => {
+        isScrollingManually = false;
     });
 });
