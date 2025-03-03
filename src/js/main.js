@@ -10,19 +10,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Aktivieren der aktiven Klasse beim Scrollen
-window.addEventListener('scroll', function () {
-    let sections = document.querySelectorAll('section');
-    let navLinks = document.querySelectorAll('nav a');
+document.addEventListener("DOMContentLoaded", function () {
+    let sections = document.querySelectorAll("section");
+    let navLinks = document.querySelectorAll("nav a");
 
-    sections.forEach(section => {
-        let rect = section.getBoundingClientRect();
-        if (rect.top <= 0 && rect.bottom > 0) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${section.id}`) {
-                    link.classList.add('active');
+    let observer = new IntersectionObserver(
+        (entries) => {
+            let visibleSection = null;
+
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    visibleSection = entry.target;
                 }
             });
+
+            if (visibleSection) {
+                navLinks.forEach((link) => {
+                    link.classList.remove("active"); // Entferne zuerst alle aktiven Klassen
+                    if (link.getAttribute("href") === `#${visibleSection.id}`) {
+                        link.classList.add("active"); // Setze nur die Klasse für den sichtbaren Abschnitt
+                    }
+                });
+            }
+        },
+        {
+            root: null, // Beobachtet das gesamte Viewport
+            rootMargin: "-50% 0px -50% 0px", // Erst wenn 50% des Elements sichtbar sind
+            threshold: 0.1, // Schwellenwert für Sichtbarkeit
         }
+    );
+
+    sections.forEach((section) => {
+        observer.observe(section);
     });
 });
+
