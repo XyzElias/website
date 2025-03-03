@@ -205,12 +205,6 @@ section {
 #header-nav ul > li > a:active {
     color: #000000;
     text-decoration: none;
-    touch-action: manipulation;
-    pointer-events: none;
-}
-
-#header-nav ul > li > a:focus {
-    pointer-events: none;
 }
 
 #header-nav .col-6 {
