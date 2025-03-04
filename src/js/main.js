@@ -105,3 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+document.addEventListener("touchend", function () {
+    document.querySelectorAll("#header-nav ul > li > a").forEach(item => {
+        item.classList.remove("hover");
+    });
+});

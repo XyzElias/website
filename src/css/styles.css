@@ -239,13 +239,6 @@ section {
     text-decoration: none;
 }
 
-@media (pointer: coarse) {
-    #header-nav ul > li > a:hover {
-        background-color: transparent !important;
-    }
-}
-
-
 #header-nav ul > li > a:active {
     color: #150042;
     text-decoration: none;
