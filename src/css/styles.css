@@ -232,12 +232,19 @@ section {
     text-decoration: none;
 }
 
-#header-nav ul > li > a:hove {
+#header-nav ul > li > a:hover {
     background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
 }
+
+@media (pointer: coarse) {
+    #header-nav ul > li > a:hover {
+        background-color: transparent !important;
+    }
+}
+
 
 #header-nav ul > li > a:active {
     color: #150042;
