@@ -106,32 +106,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function handleHoverEffect() {
-    function isTouchDevice() {
-        return 'ontouchstart' in window || navigator.maxTouchPoints;
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    const hoverElements = document.querySelectorAll(".hover-effect");
 
-    if (isTouchDevice()) {
-        document.body.classList.add('touch-device');
+    hoverElements.forEach(element => {
+        element.addEventListener("mouseenter", () => {
+            element.classList.add("hover-active");
+        });
 
-        document.addEventListener('touchstart', function(event) {
-            const target = event.target.closest('a'); // Nur für <a>-Tags
-            if (target) {
-                target.classList.add('temporary-hover');
-                setTimeout(() => {
-                    target.classList.remove('temporary-hover');
-                }, 1000); // Entfernt den Hover-Effekt nach 1 Sekunde
-            }
-
-            // Simuliert einen Klick irgendwo anders, um Hover zu entfernen
-            setTimeout(() => {
-                document.body.click();
-            }, 50);
-        }, { passive: true });
-    } else {
-        document.body.classList.remove('touch-device');
-    }
-}
-
-handleHoverEffect();
-window.addEventListener('resize', handleHoverEffect);
+        element.addEventListener("mouseleave", () => {
+            element.classList.remove("hover-active");
+        });
+    });
+});
