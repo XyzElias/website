@@ -110,6 +110,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const hoverElements = document.querySelectorAll("#header-nav ul > li > a");
 
     hoverElements.forEach(element => {
+        element.addEventListener("mouseenter", () => {
+            setTimeout(() => {
+                element.style.pointerEvents = "none"; // Deaktiviert Hover temporär
+                setTimeout(() => {
+                    element.style.pointerEvents = ""; // Reaktiviert Hover nach kurzer Zeit
+                }, 100); // Kurz warten, um das Hover-Problem zu beheben
+            }, 1000); // Nach 1 Sekunde Hover entfernen
+        });
+
         // Speziell für Mobilgeräte: Bei Touch das gleiche Verhalten
         element.addEventListener("touchstart", () => {
             setTimeout(() => {
