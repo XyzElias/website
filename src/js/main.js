@@ -106,8 +106,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("touchend", function () {
-    document.querySelectorAll("#header-nav ul > li > a").forEach(item => {
-        item.classList.remove("hover");
+const elements = document.querySelectorAll('#header-nav ul > li > a');
+elements.forEach((element) => {
+    // Add touchstart event listener
+    element.addEventListener('touchstart', () => {
+        element.classList.add('touch-hover-effect');
+    });
+
+    element.addEventListener('touchend', () => {
+        // Remove touch effect
+        element.classList.remove('touch-hover-effect');
     });
 });

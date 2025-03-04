@@ -239,6 +239,13 @@ section {
     text-decoration: none;
 }
 
+.touch-hover-effect {
+    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
 #header-nav ul > li > a:active {
     color: #150042;
     text-decoration: none;
