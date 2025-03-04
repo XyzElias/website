@@ -106,15 +106,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-const elements = document.querySelectorAll('#header-nav ul > li > a');
-elements.forEach((element) => {
-    // Add touchstart event listener
-    element.addEventListener('touchstart', () => {
-        element.classList.add('touch-hover-effect');
-    });
+function disableHoverOnMobile() {
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints;
+    }
 
-    element.addEventListener('touchend', () => {
-        // Remove touch effect
-        element.classList.remove('touch-hover-effect');
-    });
-});
+    if (isTouchDevice()) {
+        document.body.classList.add('no-hover');
+    } else {
+        document.body.classList.remove('no-hover');
+    }
+}
+
+disableHoverOnMobile();
+window.addEventListener('resize', disableHoverOnMobile);
