@@ -106,27 +106,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const hoverElements = document.querySelectorAll("#header-nav ul > li > a");
+function handleHoverEffect() {
+    function isTouchDevice() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints;
+    }
 
-    hoverElements.forEach(element => {
-        element.addEventListener("mouseenter", () => {
-            setTimeout(() => {
-                element.style.pointerEvents = "none"; // Deaktiviert Hover temporär
-                setTimeout(() => {
-                    element.style.pointerEvents = ""; // Reaktiviert Hover nach kurzer Zeit
-                }, 100); // Kurz warten, um das Hover-Problem zu beheben
-            }, 1000); // Nach 1 Sekunde Hover entfernen
-        });
+    if (isTouchDevice()) {
+        document.body.classList.add('touch-device');
 
-        // Speziell für Mobilgeräte: Bei Touch das gleiche Verhalten
-        element.addEventListener("touchstart", () => {
-            setTimeout(() => {
-                element.style.pointerEvents = "none";
+        document.addEventListener('touchstart', function(event) {
+            const target = event.target.closest('a'); // Nur für <a>-Tags
+            if (target) {
+                target.classList.add('temporary-hover');
                 setTimeout(() => {
-                    element.style.pointerEvents = "";
-                }, 100);
-            }, 1000);
-        });
-    });
-});
+                    target.classList.remove('temporary-hover');
+                }, 1000); // Entfernt den Hover-Effekt nach 1 Sekunde
+            }
+
+            // Simuliert einen Klick irgendwo anders, um Hover zu entfernen
+            setTimeout(() => {
+                document.body.click();
+            }, 50);
+        }, { passive: true });
+    } else {
+        document.body.classList.remove('touch-device');
+    }
+}
+
+handleHoverEffect();
+window.addEventListener('resize', handleHoverEffect);
