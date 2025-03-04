@@ -1,15 +1,5 @@
 /* === GLOBAL === */
 
-.no-hover *:hover {
-    pointer-events: none !important;
-}
-
-/* Sicherstellen, dass Klicks auf Navigations-Elemente weiterhin funktionieren */
-.touch-device nav a,
-.touch-device button {
-    pointer-events: auto !important;
-}
-
 html {
     font-size: 16px;
 }
@@ -243,6 +233,13 @@ section {
 }
 
 #header-nav ul > li > a:hover {
+    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+#header-nav ul > li > a.temporary-hover {
     background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
     background-clip: text;
     -webkit-text-fill-color: transparent;

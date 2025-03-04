@@ -106,19 +106,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function disableHoverOnMobile() {
+function handleHoverEffect() {
     function isTouchDevice() {
         return 'ontouchstart' in window || navigator.maxTouchPoints;
     }
 
     if (isTouchDevice()) {
-        document.body.classList.add('no-hover');
         document.body.classList.add('touch-device');
+
+        document.addEventListener('touchstart', function(event) {
+            const target = event.target.closest('a'); // Nur für <a>-Tags
+            if (target) {
+                target.classList.add('temporary-hover');
+                setTimeout(() => {
+                    target.classList.remove('temporary-hover');
+                }, 1000); // Entfernt den Hover-Effekt nach 1 Sekunde
+            }
+        }, { passive: true });
     } else {
-        document.body.classList.remove('no-hover');
         document.body.classList.remove('touch-device');
     }
 }
 
-disableHoverOnMobile();
-window.addEventListener('resize', disableHoverOnMobile);
+handleHoverEffect();
+window.addEventListener('resize', handleHoverEffect);
