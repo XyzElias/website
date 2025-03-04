@@ -5,7 +5,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         let target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            let offset = 20; // Offset nach oben (Anpassen nach Bedarf)
+            let offset = 90; // Offset nach oben (Anpassen nach Bedarf)
             let targetPosition = target.offsetTop - offset;
 
             window.scrollTo({

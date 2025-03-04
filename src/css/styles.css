@@ -99,7 +99,7 @@ section {
     height: 100vh;
 }
 
-.button {
+.email-button {
     background: #f2f7fc;
     color: #150042;
     border-radius: 50px;
@@ -114,7 +114,7 @@ section {
     text-align: center;
 }
 
-.email-button {
+.div-email-button {
     background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
     border-radius: 50px;
     padding: 3px;
@@ -126,7 +126,38 @@ section {
     margin-left: 12px;
 }
 
-.button:hover {
+.email-button:hover {
+    background-color: transparent;
+}
+
+.kontakt-button {
+    background: #150042;
+    color: #f6f6f6;
+    border-radius: 50px;
+    padding: 9px 45px 6px;
+    font-size: 1.2em;
+    transition: all .2s;
+    width: 128px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+.div-kontakt-button {
+    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
+    border-radius: 50px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 136px;
+    margin-bottom: 5px;
+}
+
+.kontakt-button:hover {
     background-color: transparent;
 }
 
@@ -413,6 +444,35 @@ section {
     font-weight: 400;
 }
 
+@media (max-width: 827px) {
+    #about h1 {
+        width: 110%;
+    }
+}
+
+@media (max-width: 768px) {
+    #about h1 {
+        text-align: center;
+        width: 100%;
+    }
+
+    #about {
+        margin-top: 300px;
+    }
+
+    #about .about-bereich {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: justify;
+        hyphens: auto;
+    }
+
+    #about .left-line {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 @media (max-width: 575px) {
     #about h1 {
         font-size: 4rem;
@@ -424,8 +484,6 @@ section {
 
     #about .about-bereich {
         width: 80%;
-        margin-right: auto;
-        margin-left: auto;
     }
 }
 
@@ -518,5 +576,50 @@ section {
 @media (max-width: 768px) {
     #kontakt button {
         width: 100%;
+    }
+}
+
+/* === FOOTER-BEREICH === */
+
+#footer {
+    background-color: #150042;
+    color: #f2f7fc;
+}
+
+#footer .socials h3, #footer .socials p {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+#footer .socials-icons a img {
+    width: 32px;
+    height: auto;
+}
+
+#footer .socials-icons div {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#footer .attribution {
+    font-size: 8px;
+    margin-top: 0;
+}
+
+#footer .footer-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 45px;
+}
+
+@media (max-width: 768px) {
+    #footer .footer-button {
+        justify-content: center;
+        align-items: center;
+    }
+
+    #footer {
+        text-align: center;
     }
 }
