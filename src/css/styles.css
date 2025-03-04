@@ -232,7 +232,7 @@ section {
     text-decoration: none;
 }
 
-#header-nav ul > li > a:hover {
+#header-nav ul > li > a:hove {
     background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
     background-clip: text;
     -webkit-text-fill-color: transparent;
