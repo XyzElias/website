@@ -113,8 +113,10 @@ function disableHoverOnMobile() {
 
     if (isTouchDevice()) {
         document.body.classList.add('no-hover');
+        document.body.classList.add('touch-device');
     } else {
         document.body.classList.remove('no-hover');
+        document.body.classList.remove('touch-device');
     }
 }
 

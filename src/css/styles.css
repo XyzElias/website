@@ -4,6 +4,11 @@
     pointer-events: none !important;
 }
 
+/* Sicherstellen, dass Klicks auf Navigations-Elemente weiterhin funktionieren */
+.touch-device nav a,
+.touch-device button {
+    pointer-events: auto !important;
+}
 
 html {
     font-size: 16px;
