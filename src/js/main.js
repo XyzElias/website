@@ -118,4 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
             element.classList.remove("hover-active");
         });
     });
+
+    // Entfernt die Klasse bei jeglicher Interaktion (z. B. Scrollen, Klicken, Touch)
+    document.addEventListener("scroll", removeHoverEffects);
+    document.addEventListener("click", removeHoverEffects);
+    document.addEventListener("touchstart", removeHoverEffects);
+
+    function removeHoverEffects() {
+        hoverElements.forEach(element => {
+            element.classList.remove("hover-active");
+        });
+    }
 });
