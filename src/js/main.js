@@ -130,3 +130,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// Formspree-Formular abschicken ohne Weiterleitung
+const form = document.getElementById("contact-form");
+const submitSite = document.getElementById("submit-message");
+
+if (form) {
+	form.addEventListener("submit", async function (e) {
+		e.preventDefault(); // verhindert Seitenwechsel
+
+		const formData = new FormData(form);
+		try {
+			const response = await fetch("https://formspree.io/f/xblgadzv", {
+				method: "POST",
+				body: formData,
+				headers: {
+					Accept: "application/json"
+				}
+			});
+
+			if (response.ok) {
+                window.location = "submit.html";
+			} else {
+				alert("Fehler beim Absenden. Bitte versuch es später erneut.");
+			}
+		} catch (error) {
+			alert("Es gab ein Problem mit der Verbindung.");
+		}
+	});
+}
