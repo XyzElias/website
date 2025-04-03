@@ -1,3 +1,27 @@
+/* === VARIABLEN === */
+
+:root {
+    --main-bg-color: #f2f7fc;
+    --primary-color: #150042;
+    --accent-color: #00a6ff;
+    --accent-color-2: #00d0ff;
+    --accent-color-3: #40ffdf;
+    --font-size-base: 16px;
+    --font-size-lg: 5rem;
+    --font-size-md: 1.3rem;
+    --font-size-sm: 1rem;
+    --border-color: #3abaff81;
+    --button-border-radius: 50px;
+    --button-padding: 9px 45px 6px;
+    --button-font-size: 1.2em;
+    --button-width: 128px;
+    --line-height: 6px;
+    --line-width: 70px;
+    --line-margin-top: -5px;
+    --section-padding: 20px;
+    --section-margin-top: 10rem;
+}
+
 /* === FONT ===*/
 
 @font-face {
@@ -10,17 +34,17 @@
 /* === GLOBAL === */
 
 html {
-    font-size: 16px;
+    font-size: var(--font-size-base);
 }
 
 body {
     margin: 0;
     font-family: "Heebo", sans-serif;
-    background-color: #f2f7fc;
+    background-color: var(--main-bg-color);
 }
 
 ::selection {
-    background: #000000;
+    background: var(--primary-color);
     color: #ffffff;
     text-shadow: none;
 }
@@ -56,50 +80,44 @@ body {
 .col-6 { width: 100%;    }
 
 @media (max-width: 1024px) {
-
     .col-1 { width: 33.333%; }
-    
 }
 
 @media (max-width: 768px) {
-
-    .col-1 { width: 50%;  }
+    .col-1 { width: 50%; }
     .col-2 { width: 100%; }
     .col-3 { width: 100%; }
     .col-4 { width: 100%; }
-    
 }
 
 @media (max-width: 480px) {
-
     .col-1 { width: 100%; }
     .col-2 { width: 100%; }
     .col-3 { width: 100%; }
     .col-4 { width: 100%; }
-    
 }
 
 /*=== GENERELLES === */
 
 .middle-line {
-    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
-    width: 70px;
-    height: 6px;
-    margin-top: -5px;
+    background-image: linear-gradient(to right, var(--accent-color), var(--accent-color-2) 55%, var(--accent-color-3));
+    width: var(--line-width);
+    height: var(--line-height);
+    margin-top: var(--line-margin-top);
     margin-left: auto;
     margin-right: auto;
 }
 
 .left-line {
-    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
-    width: 70px;
-    height: 6px;
-    margin-top: -5px;
+    background-image: linear-gradient(to right, var(--accent-color), var(--accent-color-2) 55%, var(--accent-color-3));
+    width: var(--line-width);
+    height: var(--line-height);
+    margin-top: var(--line-margin-top);
     margin-left: 0;
 }
 
 .active {
-    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-image: linear-gradient(97deg, var(--accent-color), var(--accent-color-2) 50%, var(--accent-color-3));
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -109,13 +127,13 @@ section, header#einleitung {
 }
 
 .email-button {
-    background: #f2f7fc;
-    color: #150042;
-    border-radius: 50px;
-    padding: 9px 45px 6px;
-    font-size: 1.2em;
+    background: var(--main-bg-color);
+    color: var(--primary-color);
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
     transition: all .2s;
-    width: 128px;
+    width: var(--button-width);
     border: none;
     display: flex;
     align-items: center;
@@ -124,8 +142,8 @@ section, header#einleitung {
 }
 
 .div-email-button {
-    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
-    border-radius: 50px;
+    background-image: linear-gradient(to right, var(--accent-color), var(--accent-color-2) 55%, var(--accent-color-3));
+    border-radius: var(--button-border-radius);
     padding: 3px;
     display: flex;
     align-items: center;
@@ -140,13 +158,13 @@ section, header#einleitung {
 }
 
 .back-button {
-    background: #f2f7fc;
-    color: #150042;
-    border-radius: 50px;
-    padding: 9px 45px 6px;
-    font-size: 1.2em;
+    background: var(--main-bg-color);
+    color: var(--primary-color);
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
     transition: all .2s;
-    width: 128px;
+    width: var(--button-width);
     border: none;
     display: flex;
     align-items: center;
@@ -155,8 +173,8 @@ section, header#einleitung {
 }
 
 .div-back-button {
-    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
-    border-radius: 50px;
+    background-image: linear-gradient(to right, var(--accent-color), var(--accent-color-2) 55%, var(--accent-color-3));
+    border-radius: var(--button-border-radius);
     padding: 3px;
     display: flex;
     align-items: center;
@@ -172,13 +190,13 @@ section, header#einleitung {
 }
 
 .kontakt-button {
-    background: #150042;
+    background: var(--primary-color);
     color: #f6f6f6;
-    border-radius: 50px;
-    padding: 9px 45px 6px;
-    font-size: 1.2em;
+    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    font-size: var(--button-font-size);
     transition: all .2s;
-    width: 128px;
+    width: var(--button-width);
     border: none;
     display: flex;
     align-items: center;
@@ -188,8 +206,8 @@ section, header#einleitung {
 }
 
 .div-kontakt-button {
-    background-image: linear-gradient(to right, #00a6ff, #00d0ff 55%, #40ffdf);
-    border-radius: 50px;
+    background-image: linear-gradient(to right, var(--accent-color), var(--accent-color-2) 55%, var(--accent-color-3));
+    border-radius: var(--button-border-radius);
     padding: 3px;
     display: flex;
     align-items: center;
@@ -200,7 +218,7 @@ section, header#einleitung {
 
 .kontakt-button:hover {
     background-color: transparent;
-    color: #150042;
+    color: var(--primary-color);
 }
 
 .sticky-elias {
@@ -239,7 +257,7 @@ section, header#einleitung {
     font-weight: bold;
     font-size: 1.2rem;
     top: 0;
-    background-color: #f2f7fc;
+    background-color: var(--main-bg-color);
     z-index: 1000;
 }
 
@@ -250,7 +268,7 @@ section, header#einleitung {
     height: 100%;
     border-bottom: lightgray 2px solid;
     padding-bottom: 55px;
-    background-color: #f2f7fc;
+    background-color: var(--main-bg-color);
 }
 
 #header-nav ul > li {
@@ -265,24 +283,24 @@ section, header#einleitung {
 }
 
 #header-nav ul > li > a:link {
-    color: #150042;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 #header-nav ul > li > a:visited {
-    color: #150042;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 #header-nav ul > li > a.hover-active {
-    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-image: linear-gradient(97deg, var(--accent-color), var(--accent-color-2) 50%, var(--accent-color-3));
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
 }
 
 #header-nav ul > li > a:active {
-    color: #150042;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -314,7 +332,7 @@ section, header#einleitung {
 }
 
 #einleitung {
-    margin-top: 10rem;
+    margin-top: var(--section-margin-top);
 }
 
 #einleitung section.einleitung-bereich {
@@ -325,11 +343,11 @@ section, header#einleitung {
 }
 
 #einleitung .einleitung-title h1 {
-    font-size: 5rem;
+    font-size: var(--font-size-lg);
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
-    color: #150042;
+    color: var(--primary-color);
 }
 
 #einleitung .einleitung-title h1:nth-of-type(2) {
@@ -345,11 +363,11 @@ section, header#einleitung {
 }
 
 #einleitung .einleitung-text {
-    font-size: 1.3rem;
+    font-size: var(--font-size-md);
     width: 110%;
     top: -85px;
     position: relative;
-    color: #150042bf;
+    color: var(--primary-color);
     font-weight: 400;
 }
 
@@ -363,130 +381,25 @@ section, header#einleitung {
 
 #einleitung .name {
     display: inline-block;
-    background-image: linear-gradient(97deg, #00a6ff, #00d0ff 50%, #40ffdf);
+    background-image: linear-gradient(97deg, var(--accent-color), var(--accent-color-2) 50%, var(--accent-color-3));
     background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-@media (max-width: 920px) {
-    #einleitung figure.einleitung-bild .portrait {
-        height: 300px;
-        width: auto;
-        margin-left: 45%;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 768px) {
-    #einleitung section.einleitung-bereich {
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    #einleitung figure.einleitung-bild {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    #einleitung figure.einleitung-bild .portrait {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: -50px;
-        height: 500px;
-    }
-
-    #einleitung {
-        margin-top: 80px;
-    }
-}
-
-@media (max-width: 575px) {
-    #einleitung .einleitung-title h1 {
-        font-size: 4rem;
-    }
-
-    #einleitung .einleitung-title h1:nth-of-type(2) {
-        top: -40px;
-    }
-
-    #einleitung .einleitung-title h1:nth-of-type(3) {
-        top: -40px;
-    }
-
-    #einleitung .einleitung-text {
-        font-size: 1rem;
-        top: -76px;
-    }
-
-    #einleitung section.einleitung-bereich {
-        width: 80%;
-    }
-
-    #einleitung .einleitung-title {
-        width: 110%;
-    }
-
-    #einleitung figure.einleitung-bild .portrait {
-        height: 400px;
-    }
-}
-
-@media (max-width: 468px) {
-    #einleitung .einleitung-title h1 {
-        font-size: 3.2rem;
-    }
-
-    #einleitung .einleitung-title h1:nth-of-type(2) {
-        top: -30px;
-    }
-
-    #einleitung .einleitung-title h1:nth-of-type(3) {
-        top: -30px;
-    }
-
-    #einleitung .einleitung-text {
-        top: -60px;
-    }
-}
-
-@media (max-width: 376px) {
-    #einleitung .einleitung-title h1 {
-        font-size: 2.2rem;
-    }
-
-    #einleitung .einleitung-title h1:nth-of-type(2) {
-        top: -20px;
-    }
-
-    #einleitung .einleitung-title h1:nth-of-type(3) {
-        top: -20px;
-    }
-
-    #einleitung .einleitung-text {
-        top: -45px;
-    }
-
-    #einleitung figure.einleitung-bild .portrait {
-        height: 300px;
-    }
 }
 
 /* === ABOUT BEREICH === */
 
 #about h1 {
-    font-size: 5rem;
+    font-size: var(--font-size-lg);
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
-    color: #150042;
+    color: var(--primary-color);
 }
 
 #about .about-text {
-    font-size: 1.3rem;
+    font-size: var(--font-size-md);
     width: 100%;
-    color: #150042bf;
+    color: var(--primary-color);
     font-weight: 400;
 }
 
@@ -525,7 +438,7 @@ section, header#einleitung {
     }
 
     #about .about-text {
-        font-size: 1rem;
+        font-size: var(--font-size-sm);
     }
 
     #about article.about-bereich {
@@ -556,19 +469,19 @@ section, header#einleitung {
 }
 
 #kontakt h1 {
-    font-size: 5rem;
+    font-size: var(--font-size-lg);
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
-    color: #150042;
+    color: var(--primary-color);
 }
 
 #kontakt input,
 #kontakt textarea {
     width: 100%;
-    border: 2px solid #3abaff81;
+    border: 2px solid var(--border-color);
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: var(--font-size-sm);
     font-family: "Raleway", "Lato", "Helvetica Neue", "Arial", sans-serif;
     color: #3D3F45;
     transition: border 0.5s ease-in-out;
@@ -608,7 +521,6 @@ section, header#einleitung {
     #kontakt {
         width: 90%;
     }
-    
 }
 
 @media (max-width: 1024px) {
@@ -616,7 +528,6 @@ section, header#einleitung {
     #kontakt {
         width: 100%;
     }
-    
 }
 
 @media (max-width: 768px) {
@@ -628,8 +539,8 @@ section, header#einleitung {
 /* === FOOTER-BEREICH === */
 
 #footer {
-    background-color: #150042;
-    color: #f2f7fc;
+    background-color: var(--primary-color);
+    color: var(--main-bg-color);
 }
 
 #footer .socials h3, #footer .socials p {
