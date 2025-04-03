@@ -18,7 +18,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Aktivieren der aktiven Klasse beim Scrollen
 document.addEventListener("DOMContentLoaded", function () {
-    let sections = document.querySelectorAll("section");
+    let sections = document.querySelectorAll(".scroll-section");
     let navLinks = document.querySelectorAll("nav a");
     let isScrollingManually = false;
     let manualScrollTimeout;
