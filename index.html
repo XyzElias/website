@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <title>Portfolio Elias Felder</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Website von Elias Felder">
+    <meta name="author" content="Elias Felder">
     <link rel="stylesheet" href="src/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/vnd.icon" href="src/img/favicon.ico">
-    <title>Portfolio Elias Felder</title>
 </head>
 <body>
 
@@ -31,12 +30,12 @@
         </div>
     </nav>
 
-    <!-- SECTION: Hallo -->
-    <section id="einleitung">
+    <!-- HEADER: Einleitung -->
+    <header id="einleitung">
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <div class="einleitung-bereich">
+                    <section class="einleitung-bereich">
                         <div class="einleitung-title">
                             <h1>Hallo.</h1>
                             <h1>Ich bin </h1><h1 class="name">Elias.</h1>
@@ -45,7 +44,7 @@
                             <p class="einleitung-text-header">Auszubildender Informatiker (Applikationsentwicklung)</p>
                             <p class="einleitung-text-content">Ich bin Fan von der Webentwicklung und momentant im ersten Lehrjahr. Ich arbeite viel an privaten Projekten. Darunter sind Websites, und das Arbeiten mit Skriptsprachen.</p>
                         </div>
-                    </div>
+                    </section>
                 </div>
                 <div class="col-3">
                     <div class="einleitung-bild">
@@ -54,20 +53,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <!-- SECTION: Über mich -->
     <section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-3">
-
-                </div>
-                <div class="col-3">
-                    <div class="about-bereich">
-                        <div class="about-title">
+                    <article class="about-bereich">
+                        <header class="about-title">
                             <h1>Über mich</h1>
-                        </div>
+                        </header>
                         <div class="left-line"></div>
                         <div class="about-text">
                             <p class="about-text-content">
@@ -80,8 +76,9 @@
                                 also melde dich gerne!
                             </p>
                         </div>
-                    </div>
+                    </article>
                 </div>
+                <div class="col-3"></div>
             </div>
         </div>
     </section>
@@ -102,28 +99,30 @@
                 <div class="row">
                     <div class="col-3">
                         <label for="Vorname">Vorname</label>
-                        <input type="text" id="Vorname" name="Vorname" placeholder="Vorname" required="" />
+                        <input type="text" id="Vorname" name="Vorname" placeholder="Vorname" required />
                     </div>
                     <div class="col-3">
                         <label for="Nachname">Nachname</label>
-                        <input type="text" id="Nachname" name="Nachname" placeholder="Nachname" required="" />
+                        <input type="text" id="Nachname" name="Nachname" placeholder="Nachname" required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
                         <label for="E-Mail">Email</label>
-                        <input type="email" id="E-Mail" name="E-Mail" placeholder="E-Mail" pattern="(?:[a-z0-9!#$%&'*+=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+=?^_`\{\|\}~\-]+)*|\u0022(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\u0022)@(?:(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9\-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])" required="" />
+                        <input type="email" id="E-Mail" name="E-Mail" placeholder="E-Mail" required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
                         <label for="Nachricht">Nachricht</label>
-                        <textarea id="Nachricht" name="Nachricht" placeholder="Nachricht" cols="30" rows="10 required="></textarea>
+                        <textarea style="resize: none; overflow: auto" id="Nachricht" name="Nachricht" placeholder="Nachricht" cols="30" rows="10" required></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 div-email-button">
-                        <button class="email-button" type="submit"><span style="background: transparent; margin-left: 0" class="div-email-button">Senden</span></button>
+                        <button class="email-button" type="submit">
+                            <span style="background: transparent; margin-left: 0" class="div-email-button">Senden</span>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -141,7 +140,7 @@
                     </div>
                     <div class="socials-icons">
                         <div class="icon-insta">
-                            <a href="https://instagram.com/xyzelias" target="_blank"><img src="src/img/icon_insta.png" alt="Instgram Icon"></a>
+                            <a href="https://instagram.com/xyzelias" target="_blank"><img src="src/img/icon_insta.png" alt="Instagram Icon"></a>
                         </div>
                         <div class="icon-tiktok">
                             <a href="https://www.tiktok.com/@xyzelias" target="_blank"><img src="src/img/icon_tiktok.png" alt="TikTok Icon"></a>

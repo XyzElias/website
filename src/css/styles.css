@@ -1,3 +1,12 @@
+/* === FONT ===*/
+
+@font-face {
+    font-family: 'Heebo';
+    src: url('../font/Heebo-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 /* === GLOBAL === */
 
 html {
@@ -95,7 +104,7 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-section {
+section, header#einleitung {
     height: 100vh;
 }
 
@@ -191,6 +200,7 @@ section {
 
 .kontakt-button:hover {
     background-color: transparent;
+    color: #150042;
 }
 
 .sticky-elias {
@@ -307,7 +317,7 @@ section {
     margin-top: 10rem;
 }
 
-#einleitung .einleitung-bereich {
+#einleitung section.einleitung-bereich {
     width: 500px;
     margin-right: 5rem;
     margin-left: auto;
@@ -347,7 +357,7 @@ section {
     font-weight: 500;
 }
 
-#einleitung .einleitung-bild {
+#einleitung figure.einleitung-bild {
     text-align: right;
 }
 
@@ -359,7 +369,7 @@ section {
 }
 
 @media (max-width: 920px) {
-    #einleitung .einleitung-bild .portrait {
+    #einleitung figure.einleitung-bild .portrait {
         height: 300px;
         width: auto;
         margin-left: 45%;
@@ -368,18 +378,18 @@ section {
 }
 
 @media (max-width: 768px) {
-    #einleitung .einleitung-bereich {
+    #einleitung section.einleitung-bereich {
         margin-right: auto;
         margin-left: auto;
     }
 
-    #einleitung .einleitung-bild {
+    #einleitung figure.einleitung-bild {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
     }
 
-    #einleitung .einleitung-bild .portrait {
+    #einleitung figure.einleitung-bild .portrait {
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -410,7 +420,7 @@ section {
         top: -76px;
     }
 
-    #einleitung .einleitung-bereich {
+    #einleitung section.einleitung-bereich {
         width: 80%;
     }
 
@@ -418,7 +428,7 @@ section {
         width: 110%;
     }
 
-    #einleitung .einleitung-bild .portrait {
+    #einleitung figure.einleitung-bild .portrait {
         height: 400px;
     }
 }
@@ -458,7 +468,7 @@ section {
         top: -45px;
     }
 
-    #einleitung .einleitung-bild .portrait {
+    #einleitung figure.einleitung-bild .portrait {
         height: 300px;
     }
 }
@@ -496,7 +506,7 @@ section {
         margin-top: 300px;
     }
 
-    #about .about-bereich {
+    #about article.about-bereich {
         margin-right: auto;
         margin-left: auto;
         text-align: justify;
@@ -518,7 +528,7 @@ section {
         font-size: 1rem;
     }
 
-    #about .about-bereich {
+    #about article.about-bereich {
         width: 80%;
     }
 }
