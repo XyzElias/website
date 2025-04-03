@@ -341,7 +341,7 @@ section, header#einleitung {
     margin-top: var(--section-margin-top);
 }
 
-#einleitung section.einleitung-bereich {
+#einleitung .einleitung-bereich {
     width: 500px;
     margin-right: 5rem;
     margin-left: auto;
@@ -402,7 +402,7 @@ section, header#einleitung {
 }
 
 @media (max-width: 768px) {
-    #einleitung section.einleitung-bereich {
+    #einleitung .einleitung-bereich {
         margin-right: auto;
         margin-left: auto;
     }
@@ -444,7 +444,7 @@ section, header#einleitung {
         top: -76px;
     }
 
-    #einleitung section.einleitung-bereich {
+    #einleitung .einleitung-bereich {
         width: 80%;
     }
 
