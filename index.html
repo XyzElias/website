@@ -1,169 +1,349 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>Portfolio Elias Felder</title>
+    <title>Elias Felder | Creative Developer</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Website von Elias Felder">
+    <meta name="description" content="Portfolio von Elias Felder - Creative Developer & Designer">
     <meta name="author" content="Elias Felder">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="src/css/styles.css">
-    <link rel="icon" type="image/vnd.icon" href="src/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="src/img/favicon.svg">
 </head>
 <body>
-
-    <div class="sticky-elias">
-        <img class="name-background" src="src/img/elias_background.png" alt="Elias Hintergrund">
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-text">EF</div>
+            <div class="loader-bar"></div>
+        </div>
     </div>
 
-    <!-- NAVIGATIONSLEISTE -->
-    <nav id="header-nav">
-        <div class="container" id="desktop-nav">
-            <div class="row">
-                <div class="col-6">
-                    <ul>
-                        <li><a href="#einleitung" class="active hover-effect">Hallo</a></li>
-                        <li><a href="#about" class="hover-effect">Über mich</a></li>
-                        <li><a href="#kontakt" class="hover-effect">Kontakt</a></li>
-                    </ul>
-                </div>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">EF</a>
+            
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">Über mich</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projekte</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- HEADER: Einleitung -->
-    <header id="einleitung" class="scroll-section">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#hero" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">Über mich</a></li>
+            <li><a href="#skills" class="mobile-link">Skills</a></li>
+            <li><a href="#projects" class="mobile-link">Projekte</a></li>
+            <li><a href="#contact" class="mobile-link">Kontakt</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background">
+            <div class="gradient-sphere sphere-1"></div>
+            <div class="gradient-sphere sphere-2"></div>
+            <div class="gradient-sphere sphere-3"></div>
+        </div>
+
         <div class="container">
-            <div class="row">
-                <div class="col-3">
-                    <section class="einleitung-bereich">
-                        <div class="einleitung-title">
-                            <h1>Hallo.</h1>
-                            <h1>Ich bin </h1><h1 class="name">Elias.</h1>
-                        </div>
-                        <div class="einleitung-text">
-                            <p class="einleitung-text-header">Auszubildender Informatiker (Applikationsentwicklung)</p>
-                            <p class="einleitung-text-content">Ich bin Fan von der Webentwicklung und momentant im ersten Lehrjahr. Ich arbeite viel an privaten Projekten. Darunter sind Websites, und das Arbeiten mit Skriptsprachen.</p>
-                        </div>
-                    </section>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="line">
+                            <span class="word">Hallo,</span>
+                        </span>
+                        <span class="line">
+                            <span class="word">ich</span>
+                            <span class="word">bin</span>
+                            <span class="word gradient-text">Elias</span>
+                        </span>
+                    </h1>
+                    <p class="hero-subtitle">Creative Developer & Designer</p>
+                    <p class="hero-description">
+                        Leidenschaftlicher Entwickler im ersten Lehrjahr mit Fokus auf moderne Webentwicklung 
+                        und kreative digitale Lösungen.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Kontakt aufnehmen</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <span>Projekte ansehen</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-3">
-                    <div class="einleitung-bild">
-                        <img class="portrait" src="src/img/bild_elias.jpg" alt="Bild von Elias">
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="src/img/bild_elias.jpg" alt="Elias Felder" class="profile-img">
+                        <div class="image-decoration"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- SECTION: Über mich -->
-    <section id="about" class="scroll-section">
+    <!-- About Section -->
+    <section id="about" class="about section">
         <div class="container">
-            <div class="col-3"></div>
-            <div class="row">
-                <div class="col-3">
-                    <article class="about-bereich">
-                        <header class="about-title">
-                            <h1>Über mich</h1>
-                        </header>
-                        <div class="left-line"></div>
-                        <div class="about-text">
-                            <p class="about-text-content">
-                                Hey! Ich bin Elias, 17 Jahre alt und lebe in der Schweiz in der Nähe von Basel.
-                                Aktuell bin ich in Ausbildung als Informatiker (Applikationsentwicklung), wie oben erwähnt,
-                                und beschäftige mich viel mit Programmieren und Design. In meiner Freizeit bin ich gerne kreativ,
-                                probiere neue Dinge aus, habe meine privaten Projekte oder entspanne bei Gaming, Musik und Filmen.
-                                Ich liebe es, zu reisen und neue Orte zu entdecken, weil mich fremde Kulturen und Perspektiven inspirieren.
-                                Musik begleitet mich durch den Alltag, und ich bin immer offen für neue Ideen und spannende Gespräche –
-                                also melde dich gerne!
-                            </p>
+            <div class="section-header">
+                <h2 class="section-title">Über mich</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">
+                        Hey! Ich bin Elias, 17 Jahre alt und lebe in der Schweiz in der Nähe von Basel.
+                    </p>
+                    <p>
+                        Als angehender Informatiker in der Fachrichtung Applikationsentwicklung verbringe ich 
+                        meine Zeit damit, kreative Lösungen zu entwickeln und neue Technologien zu erkunden. 
+                        Meine Leidenschaft gilt besonders der Webentwicklung, wo ich Design und Funktionalität 
+                        zu einzigartigen Erlebnissen verbinde.
+                    </p>
+                    <p>
+                        In meiner Freizeit arbeite ich an privaten Projekten, experimentiere mit neuen 
+                        Frameworks und Technologien oder entspanne bei Gaming, Musik und Filmen. Reisen 
+                        inspiriert mich dabei, neue Perspektiven zu gewinnen und meine Kreativität zu fördern.
+                    </p>
+                </div>
+
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                    </article>
+                        <h3>1. Lehrjahr</h3>
+                        <p>Applikationsentwicklung</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>2+</h3>
+                        <p>Aktive Projekte</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>100%</h3>
+                        <p>Motivation</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION: Kontakt -->
-    <section id="kontakt" class="scroll-section">
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
         <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <header class="intro-container">
-                        <h1>Kontakt</h1>
-                        <div class="middle-line"></div>
-                        <p>Kontaktiere mich über das unten stehende Formular</p>
-                    </header>
+            <div class="section-header">
+                <h2 class="section-title">Skills & Technologien</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML5</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                    <span class="skill-percentage">90%</span>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>CSS3</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                    <span class="skill-percentage">90%</span>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 60%"></div>
+                    </div>
+                    <span class="skill-percentage">60%</span>
                 </div>
             </div>
-            <form action="https://formspree.io/f/xblgadzv" method="POST" id="contact-form">
-                <div class="row">
-                    <div class="col-3">
-                        <label for="Vorname">Vorname</label>
-                        <input type="text" id="Vorname" name="Vorname" placeholder="Vorname" required />
-                    </div>
-                    <div class="col-3">
-                        <label for="Nachname">Nachname</label>
-                        <input type="text" id="Nachname" name="Nachname" placeholder="Nachname" required />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <label for="E-Mail">Email</label>
-                        <input type="email" id="E-Mail" name="E-Mail" placeholder="E-Mail" required />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <label for="Nachricht">Nachricht</label>
-                        <textarea style="resize: none; overflow: auto" id="Nachricht" name="Nachricht" placeholder="Nachricht" cols="30" rows="10" required></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6 div-email-button">
-                        <button class="email-button" type="submit">
-                            <span style="background: transparent; margin-left: 0" class="div-email-button">Senden</span>
-                        </button>
-                    </div>
-                </div>
-            </form>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer id="footer">
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
         <div class="container">
-            <div class="row">
-                <div class="col-3">
-                    <div class="socials">
-                        <h3>Social Medias</h3>
-                        <p>Erreiche mich auf folgenden Social Medias</p>
+            <div class="section-header">
+                <h2 class="section-title">Projekte</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="src/img/portfolio.png" alt="Portfolio Website">
+                        <div class="project-overlay">
+                            <a href="https://eliasfelder.ch" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="socials-icons">
-                        <div class="icon-insta">
-                            <a href="https://instagram.com/xyzelias" target="_blank"><img src="src/img/icon_insta.png" alt="Instagram Icon"></a>
+                    <div class="project-content">
+                        <h3>Portfolio Website</h3>
+                        <p>Meine persönliche Portfolio-Website mit modernem Design und interaktiven Elementen.</p>
+                        <div class="project-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
                         </div>
-                        <div class="icon-tiktok">
-                            <a href="https://www.tiktok.com/@xyzelias" target="_blank"><img src="src/img/icon_tiktok.png" alt="TikTok Icon"></a>
-                        </div>
-                        <div class="icon-linkedin">
-                            <a href="https://www.linkedin.com/in/elias-felder-4a1562329/" target="_blank"><img src="src/img/icon_linkedin.png" alt="LinkedIn Icon"></a>
-                        </div>
-                        <div class="icon-x">
-                            <a href="https://x.com/XyzEliass?s=08" target="_blank"><img src="src/img/icon_x.png" alt="X Icon"></a>
-                        </div>
-                        <p class="attribution">Icons designed by Freepik</p>
                     </div>
-                </div>
-                <div class="col-3">
-                    <div class="footer-button">
-                        <div class="div-kontakt-button">
-                            <a href="#kontakt" class="kontakt-button"><span style="background: transparent; margin-left: 0" class="div-kontakt-button">Kontakt</span></a>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="src/img/qrcode.png" alt="QR Code Generator">
+                        <div class="project-overlay">
+                            <a href="https://qrcode.eliasfelder.ch" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>QR Code Generator</h3>
+                        <p>Web-App zum Erstellen von QR-Codes mit verschiedenen Anpassungsmöglichkeiten.</p>
+                        <div class="project-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Kontakt</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Lass uns zusammen etwas Großartiges erschaffen</p>
+            </div>
+
+            <div class="contact-content">
+                <form action="https://formspree.io/f/xblgadzv" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name">Name</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="subject" id="subject" required>
+                        <label for="subject">Betreff</label>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" required></textarea>
+                        <label for="message">Nachricht</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Nachricht senden</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>eliasfelder07@gmail.com</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Standort</h3>
+                        <p>Basel, Schweiz</p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://instagram.com/xyzelias" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@xyzelias" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/elias-felder-4a1562329/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/eliasfelder" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://discord.com/users/545590902135980035" target="_blank" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Elias Felder. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
     <script src="src/js/main.js"></script>
 </body>
 </html>
