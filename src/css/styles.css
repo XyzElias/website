@@ -599,7 +599,7 @@ nav.scrolled {
 
 .profile-img {
     width: 100%;
-    max-width: 450px;
+    max-width: 350px;
     height: auto;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
@@ -609,7 +609,7 @@ nav.scrolled {
 
 .image-decoration {
     position: absolute;
-    inset: -20px;
+    inset: -15px;
     background: var(--accent-gradient);
     border-radius: var(--radius-lg);
     opacity: 0.7;
