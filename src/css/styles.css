@@ -238,7 +238,7 @@ p.lead {
 
 @media (hover: hover) and (pointer: fine) {
     .cursor {
-        display: none;
+        display: block;
         width: 24px;
         height: 24px;
         background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
